@@ -14,6 +14,8 @@ fontColorPicker.addEventListener("change",(e)=>{
     ctx.fillStyle=e.target.value;
 })
 
+
+//for mouse clicks
 canvas.addEventListener("mousedown",(e)=>{
     isDrawing=true;
     lastX=e.offsetX;
@@ -37,11 +39,40 @@ canvas.addEventListener("mouseup",(e)=>{
     isDrawing=false;
 })
 
+//for touch screens
+canvas.addEventListener("touchstart",(e)=>{
+    isDrawing=true;
+    const rect = canvas.getBoundingClientRect();
+    lastX=e.touches[0].clientX - rect.left;
+    lastY=e.touches[0].clientY - rect.top;
+})
+
+canvas.addEventListener("touchmove",(e)=>{
+    if(isDrawing)
+    {
+        e.preventDefault();
+        const rect = canvas.getBoundingClientRect();
+        ctx.beginPath();
+        ctx.moveTo(lastX,lastY);
+        ctx.lineTo(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top);
+        ctx.stroke();
+
+        lastX=e.touches[0].clientX - rect.left;
+        lastY=e.touches[0].clientY - rect.top;
+    }
+})
+
+canvas.addEventListener("touchend",()=>{
+    isDrawing=false;
+})
+
 
 canvasColorPicker.addEventListener("change",(e)=>{
     ctx.fillStyle=e.target.value;
     ctx.fillRect(0,0,800,800);
 })
+
+
 
 ctx.lineWidth=2;
 fontSizePicker.addEventListener("change",(e)=>{
