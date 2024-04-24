@@ -19,3 +19,4 @@ This web app lets you effortlessly create and customize digital signatures.
 3. Save or retrieve signatures.
 
 Enjoy creating unique digital signatures! 🎉 
+This project is a part of a MERN Course from 30dayscoding.com.
