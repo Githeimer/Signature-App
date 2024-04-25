@@ -7,7 +7,7 @@ const saveButton=document.getElementById('saveButton');
 const retrieveButton=document.getElementById('retrieveButton');
 
 const ctx= canvas.getContext('2d');
-
+let isDrawing;
 
 fontColorPicker.addEventListener("change",(e)=>{
     ctx.strokeStyle=e.target.value;
